@@ -2,6 +2,61 @@ import React from "react"
 import InputMask from "react-input-mask"
 import { Button, Container, Divider, Form, Icon } from "semantic-ui-react"
 
+const ufList = [
+  {
+    key: '',
+    text: '',
+    value: ''
+  },
+  {
+    key: 'o',
+    text: 'Alagoas',
+    value: 'AL'
+  },
+  {
+    key: 'f',
+    text: 'Paraíba',
+    value: 'PB'
+  },
+  {
+    key: 'm',
+    text: 'Pernambuco',
+    value: 'PE'
+  },
+  {
+    key: 'b',
+    text: 'Bahia',
+    value: 'BA'
+  },
+  {
+    key: 'c',
+    text: 'Ceará',
+    value: 'CE'
+  },
+  {
+    key: 'ma',
+    text: 'Maranhão',
+    value: 'MA'
+  },
+  {
+    key: 'p',
+    text: 'Piauí',
+    value: 'PI'
+  },
+  {
+    key: 'r',
+    text: 'Rio Grande do Norte',
+    value: 'RN'
+  },
+  {
+    key: 's',
+    text: 'Sergipe',
+    value: 'SE'
+  },
+
+]
+
+
 export default function FormEntregador() {
   return (
     <div>
@@ -108,13 +163,13 @@ export default function FormEntregador() {
                   fluid
                   label='Número'
                 >
-                  
+
                 </Form.Input>
 
-                
+
               </Form.Group>
 
-              
+
               <Form.Group widths='equal'>
                 <Form.Input
                   fluid
@@ -126,21 +181,42 @@ export default function FormEntregador() {
                   fluid
                   label='Cidade'
                 >
-                  
+
                 </Form.Input>
 
                 <Form.Input
                   fluid
                   label='CEP'
                 >
-                  
+
                 </Form.Input>
 
-                
+
               </Form.Group>
 
-              
-            </Form>
+              <Form.Select
+                fluid
+                label='UF'
+                options={ufList}
+                placeholder='Selecione'
+              //value={enderecoEstado}
+              //onChange={(e,{value}) => {
+              //setEnderecoEstado(value)
+              //}}
+              />
+
+              <Form.Input
+                fluid
+                label='Complemento'
+              //value={enderecoComplemento}
+              //onChange={e => setEnderecoComplemento(e.target.value)}
+              />
+
+
+
+              </Form>
+       
+
 
             <div style={{ marginTop: "4%" }}>
               <Button
@@ -166,10 +242,13 @@ export default function FormEntregador() {
                 <Icon name='save' />
                 Salvar
               </Button>
+             
             </div>
           </div>
         </Container>
-      </div>
-    </div>
+        
+      </div >
+    </div >
+   
   )
 }
