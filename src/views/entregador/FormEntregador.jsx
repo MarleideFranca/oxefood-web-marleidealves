@@ -1,6 +1,7 @@
 import React from "react"
 import InputMask from "react-input-mask"
 import { Button, Container, Divider, Form, Icon } from "semantic-ui-react"
+import MenuSistema from '../../MenuSistema';
 
 const ufList = [
   {
@@ -60,6 +61,7 @@ const ufList = [
 export default function FormEntregador() {
   return (
     <div>
+      <MenuSistema tela={'entregador'} />
       <div style={{ marginTop: "3%" }}>
         <Container textAlign='justified'>
           <h2>
@@ -212,10 +214,26 @@ export default function FormEntregador() {
               //onChange={e => setEnderecoComplemento(e.target.value)}
               />
 
+              <Form.Group inline>
 
+                <label>Ativo: </label>
 
-              </Form>
-       
+                <Form.Radio
+                  label='Sim'
+                 // checked={ativo}
+                  //onChange={e => setAtivo(true)}
+                />
+
+                <Form.Radio
+                  label='Não'
+                  //checked={!ativo}
+                  //onChange={e => setAtivo(false)}
+                />
+
+              </Form.Group>
+
+            </Form>
+
 
 
             <div style={{ marginTop: "4%" }}>
@@ -242,13 +260,13 @@ export default function FormEntregador() {
                 <Icon name='save' />
                 Salvar
               </Button>
-             
+
             </div>
           </div>
         </Container>
-        
+
       </div >
     </div >
-   
+
   )
 }
