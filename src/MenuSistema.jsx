@@ -19,7 +19,8 @@ export default function MenuSistema(props) {
                     name='cliente'
                     active={props.tela === 'cliente'}
                     as={Link}
-                    to='/form-cliente'
+                    //to='/form-cliente'
+                    to='/list-cliente'
                 />
                 <Menu.Item
                     name='produto'
