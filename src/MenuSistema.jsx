@@ -25,7 +25,6 @@ export default function MenuSistema(props) {
                     name='produto'
                     active={props.tela === 'produto'}
                     as={Link}
-                    //to='/form-produto'
                     to='/list-produto'
                 />
 
@@ -33,7 +32,8 @@ export default function MenuSistema(props) {
                     name='entregador'
                     active={props.tela === 'entregador'}
                     as={Link}
-                    to='/form-entregador'
+                    //to='/form-entregador'
+                     to='/list-entregador'
                 />
 
             </Menu>
