@@ -48,7 +48,7 @@ export default function FormCliente() {
                     console.log('Cliente alterado com sucesso.')
                 })
                 .catch((error) => {
-                    console.log('Erro ao alter um cliente.')
+                    console.log('Erro ao alterar um cliente.')
                 })
         } else { //Cadastro:
             axios.post("http://localhost:8080/api/cliente", clienteRequest)
@@ -61,16 +61,6 @@ export default function FormCliente() {
         }
     }
 
-
-    /*   axios.post("http://localhost:8080/api/cliente", clienteRequest)
-           .then((response) => {
-               console.log('Cliente cadastrado com sucesso.')
-           })
-           .catch((error) => {
-               console.log('Erro ao incluir o um cliente.')
-           })
-   }
-*/
 
     function formatarData(dataParam) {
 
