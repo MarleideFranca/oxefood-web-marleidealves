@@ -78,7 +78,7 @@ export default function FormEntregador() {
 	const [enderecoBairro, setEnderecoBairro] = useState();
 	const [enderecoCep, setEnderecoCep] = useState();
 	const [enderecoCidade, setEnderecoCidade] = useState();
-	const [enderecoEstado, setEnderecoEstado] = useState();
+	const [enderecoUf, setEnderecoUf] = useState();
 	const [enderecoComplemento, setEnderecoComplemento] = useState();
 	const [ativo, setAtivo] = useState(true);
 
@@ -100,7 +100,7 @@ export default function FormEntregador() {
 					setEnderecoBairro(response.data.enderecoBairro)
 					setEnderecoCep(response.data.enderecoCep)
 					setEnderecoCidade(response.data.enderecoCidade)
-					setEnderecoEstado(response.data.enderecoEstado)
+					setEnderecoUf(response.data.enderecoUf)
 					setEnderecoComplemento(response.data.enderecoComplemento)
 					setAtivo(response.data.ativo)
 				})
@@ -125,7 +125,7 @@ export default function FormEntregador() {
 			enderecoBairro: enderecoBairro,
 			enderecoCep: enderecoCep,
 			enderecoCidade: enderecoCidade,
-			setEnderecoEstado: enderecoEstado,
+			setEnderecoUf: enderecoUf,
 			enderecoComplemento: enderecoComplemento,
 			ativo: ativo
 		}
@@ -334,9 +334,9 @@ export default function FormEntregador() {
 								label='UF'
 								options={ufList}
 								placeholder='Selecione'
-								value={enderecoEstado}
+								value={enderecoUf}
 								onChange={(e, { value }) => {
-									setEnderecoEstado(value)
+									setEnderecoUf(value)
 								}}
 							/>
 
