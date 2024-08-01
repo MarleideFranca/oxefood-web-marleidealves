@@ -5,14 +5,14 @@ import {
   Button,
   Container,
   Divider,
-  Icon,
-  Table,
-  Modal,
   Header,
+  Icon,
+  Modal,
+  Table,
 } from "semantic-ui-react";
 import MenuSistema from "../../MenuSistema";
 
-export default function ListCliente() {
+export default function ListOrdemServico() {
   const [lista, setLista] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [idRemover, setIdRemover] = useState();
@@ -28,22 +28,22 @@ export default function ListCliente() {
 
   async function remover() {
     await axios
-      .delete("http://localhost:8080/api/cliente/" + idRemover)
+      .delete("http://localhost:8080/api/ordemServico/" + idRemover)
       .then((response) => {
-        console.log("Cliente removido com sucesso.");
+        console.log("Ordem de Serviço removido com sucesso.");
 
-        axios.get("http://localhost:8080/api/cliente").then((response) => {
+        axios.get("http://localhost:8080/api/ordemServico").then((response) => {
           setLista(response.data);
         });
       })
       .catch((error) => {
-        console.log("Erro ao remover um cliente.");
+        console.log("Erro ao remover uma ordem de serviço.");
       });
     setOpenModal(false);
   }
 
   function carregarLista() {
-    axios.get("http://localhost:8080/api/cliente").then((response) => {
+    axios.get("http://localhost:8080/api/ordemServico").then((response) => {
       setLista(response.data);
     });
   }
@@ -58,10 +58,10 @@ export default function ListCliente() {
   }
   return (
     <div>
-      <MenuSistema tela={"cliente"} />
+      <MenuSistema tela={"ordemServico"} />
       <div style={{ marginTop: "3%" }}>
         <Container textAlign="justified">
-          <h2> Cliente </h2>
+          <h2> Ordem de Servico</h2>
           <Divider />
 
           <div style={{ marginTop: "4%" }}>
@@ -72,7 +72,7 @@ export default function ListCliente() {
               icon="clipboard outline"
               floated="right"
               as={Link}
-              to="/form-cliente"
+              to="/form-ordemServico"
             />
             <br />
             <br />
@@ -81,36 +81,38 @@ export default function ListCliente() {
             <Table color="orange" sortable celled>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>Nome</Table.HeaderCell>
-                  <Table.HeaderCell>CPF</Table.HeaderCell>
-                  <Table.HeaderCell>Data de Nascimento</Table.HeaderCell>
-                  <Table.HeaderCell>Fone Celular</Table.HeaderCell>
-                  <Table.HeaderCell>Fone Fixo</Table.HeaderCell>
+                  <Table.HeaderCell>Número</Table.HeaderCell>
+                  <Table.HeaderCell>Peças Utilizadas</Table.HeaderCell>
+                  <Table.HeaderCell>Data do Serviço</Table.HeaderCell>
+                  <Table.HeaderCell>Serviços Efetuados</Table.HeaderCell>
+                  <Table.HeaderCell>Cliente</Table.HeaderCell>
+                  <Table.HeaderCell>Valor do Serviço</Table.HeaderCell>
                   <Table.HeaderCell textAlign="center">Ações</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 
               <Table.Body>
-                {lista.map((cliente) => (
-                  <Table.Row key={cliente.id}>
-                    <Table.Cell>{cliente.nome}</Table.Cell>
-                    <Table.Cell>{cliente.cpf}</Table.Cell>
+                {lista.map((ordemServico) => (
+                  <Table.Row key={ordemServico.id}>
+                    <Table.Cell>{ordemServico.numero}</Table.Cell>
+                    <Table.Cell>{ordemServico.pecasUtilizadas}</Table.Cell>
                     <Table.Cell>
-                      {formatarData(cliente.dataNascimento)}
+                      {formatarData(ordemServico.dataServico)}
                     </Table.Cell>
-                    <Table.Cell>{cliente.foneCelular}</Table.Cell>
-                    <Table.Cell>{cliente.foneFixo}</Table.Cell>
+                    <Table.Cell>{ordemServico.servicosEfetuados}</Table.Cell>
+                    <Table.Cell>{ordemServico.cliente}</Table.Cell>
+                    <Table.Cell>{ordemServico.valorServico}</Table.Cell>
                     <Table.Cell textAlign="center">
                       <Button
                         inverted
                         circular
                         color="green"
-                        title="Clique aqui para editar os dados deste cliente"
+                        title="Clique aqui para editar os dados desta ordem de serviço"
                         icon
                       >
                         <Link
-                          to="/form-cliente"
-                          state={{ id: cliente.id }}
+                          to="/form-ordemServico"
+                          state={{ id: ordemServico.id }}
                           style={{ color: "green" }}
                         >
                           {" "}
@@ -122,9 +124,9 @@ export default function ListCliente() {
                         inverted
                         circular
                         color="red"
-                        title="Clique aqui para remover este cliente"
+                        title="Clique aqui para remover esta ordem de serviço"
                         icon
-                        onClick={(e) => confirmaRemover(cliente.id)}
+                        onClick={(e) => confirmaRemover(ordemServico.id)}
                       >
                         <Icon name="trash" />
                       </Button>
